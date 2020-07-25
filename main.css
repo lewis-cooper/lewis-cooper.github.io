@@ -2,7 +2,7 @@ body{
   margin: 0px;
   padding: 0px;
   background-color: #19181D;
-  min-width:600px;
+  min-width:1000px;
 }
 
 .cirlce{
@@ -36,38 +36,27 @@ body{
   opacity: .3;
 }
 
-.msg{
+.coming_soon{
   font-family: sans-serif;
   font-size: 20px;
   color: white;
   letter-spacing: 45px;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.notifymsg{
-  font-family: sans-serif;
-  font-size: 12px;
-  color: #FFD1DA;
-  letter-spacing: 2px;
-  position: absolute;
-  bottom: 17%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 51.5%;
+  transform: translateX(-50%);
 }
 
 .field{
-  position: absolute;
+  position: fixed;
   bottom: 8%;
-  left: 54%;
+  left: 50%;
   transform: translateX(-50%);
 }
 
 .field input{
   height: 35px;
-  width: 300px;
+  width: 250px;
   background-color: #101113;
   outline: none;
   border: none;
@@ -88,8 +77,9 @@ body{
   letter-spacing: 1px;
   border: none;
   border-radius: 35px;
-  position: relative;
-  left: -100px;
+  position: fixed;
+  bottom: 2%;
+  left: 437px;
   z-index: 999;
 
 }
