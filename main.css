@@ -47,7 +47,7 @@ body{
   transform: translate(-50%, -50%);
 }
 
-/* .notifymsg{
+.notifymsg{
   font-family: sans-serif;
   font-size: 12px;
   color: #FFD1DA;
@@ -92,4 +92,4 @@ body{
   left: -100px;
   z-index: 999;
 
-} */
+}
