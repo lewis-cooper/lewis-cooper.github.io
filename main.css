@@ -2,7 +2,6 @@ body{
   margin: 0px;
   padding: 0px;
   background-color: #19181D;
-  min-width:1000px;
 }
 
 .cirlce{
@@ -11,8 +10,8 @@ body{
   border-radius: 50%;
   background: linear-gradient(#313247 0%, #19181D 30%);
   position: absolute;
-  top: 20%;
-  left: 35%;
+  top: 25%;
+  left: 39%;
 }
 
 .cirlce:before{
@@ -21,10 +20,9 @@ body{
   width: 400px;
   background: linear-gradient(#FFD1DA 0%, #FF849D 5%, #2D2133 25%);
   border-radius: 50%;
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 22%;
+  left: 39%;
   filter:blur(7px);
   z-index: -1;
 }
@@ -32,6 +30,7 @@ body{
 .circle:after{
   width: 415px;
   top: 35%;
+  position: fixed;
   filter: blur(14px);
   opacity: .3;
 }
@@ -43,7 +42,7 @@ body{
   letter-spacing: 45px;
   position: fixed;
   top: 50%;
-  left: 51.5%;
+  left: 51%;
   transform: translateX(-50%);
 }
 
