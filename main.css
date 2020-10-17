@@ -117,10 +117,11 @@ body {
 .bio{
   color: white;
   font-size: 20px;
-  margin-left: 8%;
+  margin-left: 20%;
   margin-top: 50px;
-  margin-right: 50px;
+  margin-right: 20%;
   margin-bottom: 0px;
+  text-align: center;
 }
 
 .contact{
@@ -141,6 +142,23 @@ body {
   margin-top: 50px;
   margin-right: 50px;
   margin-bottom: 0px;
+}
+.button{
+  padding: auto;
+  margin-top: 35px;
+  width: 175px;
+  height: 100px;
+  background-color: #1d3557;
+  font-size: 20px;
+  color: white;
+  -webkit-border-radius: 20px;
+  border-color: #1d3557;
+  transition: all .2s ease-in-out;
+  cursor:pointer;
+}
+.button:hover{
+  transform: scale(1.1) perspective(0px);
+  font-size: 20px;
 }
 .footer{
   margin-left: 40%;

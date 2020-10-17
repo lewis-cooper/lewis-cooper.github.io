@@ -2,11 +2,12 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  margin-top: 0px;
+  margin: 0px 0px;
+  padding: 0px;
   background-color: #ECEBF3;
   font-family: helvetica;
-  margin-left: 0%;
 }
+
 .topnav {
   overflow: hidden;
   background-color: #1D3557;
@@ -30,25 +31,24 @@ body {
   background-color: #457B9D;
   color: white;
 }
-.wrapper{
-  margin-top: 100px;
-}
-.top{
-  background-color: #1D3557;
-}
+
 .heading{
   text-align: center;
-  letter-spacing: 2px;
-  font-size: 50px;
+  letter-spacing: 8px;
+  padding-top: 125px;
+  padding-bottom: 75px;
+  color: #ECEBF3;
+  background-color: #457B9D;
+  margin-top: 0px;
 }
 
 .main{
-  margin-top: 10%;
-  font-size: 20px;
+  font-size: 18px;
 }
 .main_body{
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-top: 50px;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .links{
