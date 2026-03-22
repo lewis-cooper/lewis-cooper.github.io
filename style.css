@@ -27,6 +27,18 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+/* Dark mode overrides */
+[data-theme="dark"] {
+  --accent: #22d3ee;
+  --accent-light: #0c2a33;
+  --accent-dark: #67e8f9;
+  --bg: #0f172a;
+  --bg-alt: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #334155;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px; /* offset for fixed nav */
@@ -81,7 +93,11 @@ img {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(15, 23, 42, 0.92);
 }
 
 .nav.scrolled {
@@ -123,9 +139,43 @@ img {
   transition: color 0.2s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--accent);
 }
+
+/* Dark mode toggle */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 0.2s, border-color 0.2s;
+  margin-left: 16px;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Light mode: show sun, hide moon */
+.theme-icon.moon { display: none; }
+.theme-icon.sun  { display: block; }
+
+/* Dark mode: show moon, hide sun */
+[data-theme="dark"] .theme-icon.moon { display: block; }
+[data-theme="dark"] .theme-icon.sun  { display: none; }
 
 /* Mobile hamburger button */
 .nav-toggle {
@@ -156,8 +206,8 @@ img {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 64px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: center;
 }
 
@@ -206,11 +256,15 @@ img {
   font-size: 0.85rem;
 }
 
+.hero-photo {
+  display: flex;
+  justify-content: center;
+}
+
 .hero-photo img {
-  width: 260px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: var(--radius);
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
 }
 
 /* --- BUTTONS --- */
@@ -555,7 +609,7 @@ img {
     top: 64px;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: var(--bg);
     backdrop-filter: blur(12px);
     flex-direction: column;
     align-items: center;
