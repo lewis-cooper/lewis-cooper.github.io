@@ -8,6 +8,15 @@
   <meta name="description" content="Lewis Cooper — PhD researcher at the Institute of Astronomy, Cambridge. AGN & binary quasars. Developer, YouTuber, and writer.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <!-- Apply dark mode immediately to prevent flash of white -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch(e) {}
+  </script>
   <!-- Google Fonts: Inter for body, JetBrains Mono for code accents -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

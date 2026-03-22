@@ -37,46 +37,58 @@
   });
 
   // --- Active nav link highlighting (scroll spy) ---
+  // Use IntersectionObserver for reliable section detection
   var navLinks = document.querySelectorAll(".nav-links a");
-  // Build a list of section IDs from the nav links
-  var sections = [];
+  var navLinkMap = {};
   navLinks.forEach(function (link) {
-    var id = link.getAttribute("href").slice(1); // remove the #
-    var el = document.getElementById(id);
-    if (el) sections.push({ id: id, el: el, link: link });
+    var id = link.getAttribute("href").slice(1);
+    navLinkMap[id] = link;
   });
 
-  function updateActiveLink() {
-    var scrollPos = window.scrollY + 120; // offset for fixed nav
-    var current = null;
-
-    // Find which section is currently in view
-    for (var i = 0; i < sections.length; i++) {
-      if (sections[i].el.offsetTop <= scrollPos) {
-        current = sections[i];
-      }
+  // Collect all sections/targets that nav links point to
+  var sectionIds = Object.keys(navLinkMap);
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Remove active from all links
+          navLinks.forEach(function (link) {
+            link.classList.remove("active");
+          });
+          // Find which section this target belongs to
+          // Walk up the DOM to find the closest element with an id in our list
+          var target = entry.target;
+          var id = target.id;
+          if (navLinkMap[id]) {
+            navLinkMap[id].classList.add("active");
+          }
+        }
+      });
+    },
+    {
+      // Trigger when a section crosses 20% from the top of the viewport
+      rootMargin: "-20% 0px -75% 0px"
     }
+  );
 
-    navLinks.forEach(function (link) {
-      link.classList.remove("active");
-    });
-
-    if (current) {
-      current.link.classList.add("active");
-    }
-  }
-
-  window.addEventListener("scroll", updateActiveLink);
-  updateActiveLink(); // run on load
+  sectionIds.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
 
   // --- Dark mode toggle ---
   var themeToggle = document.getElementById("theme-toggle");
+  if (!themeToggle) return;
+
   var root = document.documentElement;
 
-  // Check for saved preference, then system preference
   function getPreferredTheme() {
-    var saved = localStorage.getItem("theme");
-    if (saved) return saved;
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved) return saved;
+    } catch (e) {
+      // localStorage not available
+    }
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
@@ -88,14 +100,18 @@
     } else {
       root.removeAttribute("data-theme");
     }
-    localStorage.setItem("theme", theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (e) {
+      // localStorage not available
+    }
   }
 
   // Apply on load
   setTheme(getPreferredTheme());
 
   themeToggle.addEventListener("click", function () {
-    var current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    setTheme(current === "dark" ? "light" : "dark");
+    var isDark = root.getAttribute("data-theme") === "dark";
+    setTheme(isDark ? "light" : "dark");
   });
 })();
