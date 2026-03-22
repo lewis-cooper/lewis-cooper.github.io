@@ -110,7 +110,6 @@ img {
   padding: 0 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 64px;
 }
 
@@ -120,6 +119,7 @@ img {
   font-size: 1.25rem;
   color: var(--accent);
   letter-spacing: -0.02em;
+  margin-right: auto; /* pushes nav-links + theme toggle to the right */
 }
 
 .nav-logo:hover {
