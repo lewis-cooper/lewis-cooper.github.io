@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Terminal | Terminal-style todo for macOS</title>
+    <meta
+      name="description"
+      content="Todo Terminal is a native macOS todo app with a terminal-style workflow, named lists, resilient local-first storage, and a drag-to-install DMG."
+    />
+    <link rel="icon" type="image/png" href="assets/todo-terminal-icon.png" />
+    <link rel="preload" href="assets/JetBrainsMono-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Todo Terminal home">
+        <img src="assets/todo-terminal-icon.png" alt="" width="40" height="40" />
+        <span>
+          <strong>Todo Terminal</strong>
+          <small>Native macOS app</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#demo">Demo</a>
+        <a href="#features">Features</a>
+        <a href="commands.html">Commands</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button button-ghost" href="https://github.com/lewis-cooper/cli-todo-list" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+        <a
+          class="button button-primary"
+          href="downloads/TodoTerminal-macOS-latest.dmg"
+          download="TodoTerminal-macOS-latest.dmg"
+        >
+          Download Mac App
+        </a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">macOS 14+ only</p>
+          <h1>A terminal-style todo app for macOS.</h1>
+          <p class="hero-lede">
+            Todo Terminal is a native AppKit app with a prompt-driven workflow, named lists, and local-first
+            storage. It keeps the interface small and the feedback fast.
+          </p>
+
+          <div class="platform-pills" aria-label="Platform highlights">
+            <span>Native AppKit window</span>
+            <span>Application Support storage</span>
+            <span>Local JSON storage</span>
+          </div>
+
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="downloads/TodoTerminal-macOS-latest.dmg"
+              download="TodoTerminal-macOS-latest.dmg"
+            >
+              Download Mac App
+            </a>
+            <a class="button button-secondary" href="#demo">See the app demo</a>
+          </div>
+
+          <p class="hero-note">
+            Todo Terminal is macOS-only for now. Download the DMG, drag the app into Applications, then first-launch with
+            Right-click &gt; Open. If macOS still blocks it, use Privacy &amp; Security &gt; Open Anyway.
+          </p>
+        </div>
+
+        <div class="hero-media" id="demo">
+          <div class="media-header">
+            <div>
+              <p class="media-kicker">App demo</p>
+              <h2>App-faithful preview</h2>
+            </div>
+            <button class="media-badge media-toggle" id="demo-theme-toggle" type="button" aria-pressed="false">
+              Dark theme
+            </button>
+          </div>
+
+          <div class="app-window" id="demo-window" data-theme="dark" aria-label="Todo Terminal demo preview">
+            <div class="window-top">
+              <div class="traffic-lights" aria-hidden="true">
+                <span class="traffic-red"></span>
+                <span class="traffic-yellow"></span>
+                <span class="traffic-green"></span>
+              </div>
+              <p class="window-caption">Todo Terminal</p>
+            </div>
+
+            <div class="app-shell">
+              <div class="todo-pane">
+                <ul class="todo-render" id="demo-lines"></ul>
+                <div class="scroll-rail" aria-hidden="true">
+                  <span class="scroll-thumb"></span>
+                </div>
+              </div>
+
+              <div class="command-bar">
+                <p class="status-line" id="demo-status"></p>
+                <div class="prompt-row">
+                  <span class="prompt-symbol">&gt;</span>
+                  <span class="prompt-text" id="demo-command"></span>
+                  <span class="cursor" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="media-note">
+            Based on the real macOS UI in the app: list area above, status line and prompt bar below, JetBrains Mono,
+            app-matched light and dark palettes, and highlight styling that matches the native window.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-heading">
+          <p class="eyebrow">What ships today</p>
+          <h2>Focused, native, and intentionally small.</h2>
+          <p>The app keeps the surface area tight, but it still includes the platform details that make it feel complete on macOS.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Terminal workflow without opening Terminal</h3>
+            <p>The native app keeps the prompt-driven interaction model, including add, edit, move, remove, theme, and highlight commands.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Multiple named lists and resilient first launch</h3>
+            <p>Create and open saved lists from the app, with first-launch setup that recreates missing runtime files in Application Support.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Local-first storage and clean release packaging</h3>
+            <p>Lists and app preferences live in Application Support, old data migrates automatically, and the repo already includes a standard DMG packaging flow.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="download">
+        <div class="section-heading">
+          <p class="eyebrow">Download</p>
+          <h2>Direct download from this site, with one extra macOS step.</h2>
+          <p>
+            The website ships a direct-download DMG. Installation is still simple, but the first launch may need approval through
+            macOS once.
+          </p>
+        </div>
+
+        <div class="download-grid">
+          <article class="download-card download-card-primary">
+            <p class="card-kicker">Recommended</p>
+            <h3>Install the latest macOS build</h3>
+            <ul class="simple-list">
+              <li>Download <code>TodoTerminal-macOS-latest.dmg</code> directly from this site.</li>
+              <li>Open the DMG and drag <code>Todo Terminal.app</code> into <code>Applications</code>.</li>
+              <li>For the first launch, right-click the app and choose <code>Open</code>.</li>
+              <li>If macOS still blocks it, open <code>System Settings &gt; Privacy &amp; Security</code> and click <code>Open Anyway</code>.</li>
+            </ul>
+            <div class="card-actions">
+              <a
+                class="button button-primary"
+                href="downloads/TodoTerminal-macOS-latest.dmg"
+                download="TodoTerminal-macOS-latest.dmg"
+              >
+                Download Mac App
+              </a>
+            </div>
+            <p class="download-note">This beta DMG is ad hoc signed for structural validity, but it is still not Developer ID signed or notarized.</p>
+          </article>
+
+          <article class="download-card">
+            <p class="card-kicker">Build it yourself</p>
+            <h3>Use Xcode if you prefer the local source path</h3>
+            <ul class="simple-list">
+              <li>Open <code>TodoTerminal.xcodeproj</code> and select the <code>Todo Terminal</code> scheme.</li>
+              <li>Run <code>bash build_and_package.sh</code> to build, sign, and package the beta DMG locally.</li>
+              <li>Use <code>./scripts/package_app.sh</code> whenever you want to refresh the latest website DMG and checksum.</li>
+            </ul>
+            <p class="download-note">
+              If you later join the Apple Developer Program, the repo still includes <code>./scripts/package_release.sh</code> for a signed,
+              notarized release flow.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-details">
+        <div class="detail-grid">
+          <article class="detail-card">
+            <h3>Storage path</h3>
+            <p>Lists and app preferences are stored locally in Application Support, and Settings can reveal that folder in Finder.</p>
+            <code>~/Library/Application Support/TodoTerminal</code>
+          </article>
+          <article class="detail-card">
+            <h3>Migration built in</h3>
+            <p>Older data from previous storage locations is migrated automatically on first run when Todo Terminal finds it.</p>
+          </article>
+          <article class="detail-card">
+            <h3>Release-ready repo</h3>
+            <p>The repository includes build, test, and packaging scripts for publishing the latest website DMG straight from <code>docs/downloads/</code>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-faq" id="faq">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Short answers to the practical bits.</h2>
+        </div>
+
+        <div class="faq-list">
+          <details open>
+            <summary>Is Todo Terminal macOS-only?</summary>
+            <p>Yes. The native app targets macOS 14 and newer, and this page is intentionally focused on the macOS release path.</p>
+          </details>
+          <details>
+            <summary>Do you store my data?</summary>
+            <p>No user data is sent to us. Todo lists are stored locally on your Mac in a folder you control, and the app does not require an account or cloud backend.</p>
+          </details>
+          <details>
+            <summary>Does the app include widget support?</summary>
+            <p>The widget target is still in the source tree for properly signed development builds, but the website beta DMG ships the standalone app only.</p>
+          </details>
+          <details>
+            <summary>Why does macOS warn on first launch?</summary>
+            <p>
+              The website download is not Developer ID signed or notarized. After you drag the app into <code>Applications</code>, first-launch it with
+              <code>Right-click &gt; Open</code>. If macOS still blocks it, go to
+              <code>System Settings &gt; Privacy &amp; Security</code> and click <code>Open Anyway</code>.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Todo Terminal is a local-first, macOS-only todo app with a terminal-style workflow.</p>
+      <div class="footer-links">
+        <a href="commands.html">Commands</a>
+        <a href="https://github.com/lewis-cooper/cli-todo-list" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="downloads/TodoTerminal-macOS-latest.dmg" download="TodoTerminal-macOS-latest.dmg">Download Mac App</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
